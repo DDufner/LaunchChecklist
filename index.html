@@ -1,0 +1,110 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Launch Checklist</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>Launch Checklist Form</h1>
+    <div id="missionTarget">
+        <script>
+            window.addEventListener("load", function() {
+                fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
+                    response.json().then(function(json) {
+                        const div = document.getElementById("missionTarget");
+                        div.innerHTML = `
+                            <ul>
+                            <li> Name: ${json[2].name} </li> 
+                            <li> Diameter: ${json[2].diameter} </li> 
+                            <li> Star: ${json[2].star} </li> 
+                            <li> Distance from Earth: ${json[2].distance} </li> 
+                            <li> Number of Moons: ${json[2].moons} </li> 
+                            </ul>
+                            <img src="${json[2].image}">`;
+                        //Look at info from exercise 26.5.1 for this 
+                    })
+                });
+            });
+        </script>
+    </div>
+    <div id="launchForm">
+        <form>
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
+                <label>Pilot Name <input type="text" name="pilotName" id="pilotName"/></label>
+            </div>
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
+                <label>Co-pilot Name <input type="text" name="copilotName"/></label>
+            </div>
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
+                <label>Fuel Level (L) <input type="number" name="fuelLevel"/></label>
+            </div>
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
+                <label>Cargo Mass (kg) <input type="number" name="cargoMass"/></label>
+                <!--changed last 2 inputs to 'type=number' for built in validation-->
+            </div>
+            <button id="formSubmit">Submit</button>
+            <script>
+                let button = document.getElementById("formSubmit");
+                button.addEventListener("click", function(event) {
+                    let pilotNameInput = document.querySelector("input[name=pilotName]");
+                    if (pilotNameInput.value === "" || pilotNameInput.value !== isNaN) {
+                        pilotNameWarning = "-Please enter a name for pilot.\n";
+                        event.preventDefault();
+                    } else {
+                        pilotNameWarning = "";
+                        //pilotNameStatus = true;
+                    }
+                    let copilotNameInput = document.querySelector("input[name=copilotName]");
+                    if (copilotNameInput.value === "" || copilotNameInput.value !== isNaN) {
+                        copilotNameWarning = "-Please enter a name for co-pilot.\n"
+                        event.preventDefault();
+                    } else {
+                        copilotNameWarning = "";
+                    }
+                    let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
+                    if (fuelLevelInput.value === "") {
+                        fuelLevelInputWarning = "-Please enter a valid fuel amount.  Must be an integer.\n";
+                        event.preventDefault();
+                    } else {
+                        fuelLevelInputWarning = "";
+                    }
+                    let cargoMassInput = document.querySelector("input[name=cargoMass]");
+                    if (cargoMassInput.value === "") {
+                        cargoMassInputWarning = "-Please enter a valid total mass of cargo.  Must be an integer.\n";
+                        event.preventDefault();
+                    } else {
+                        cargoMassInputWarning = "";
+                    }
+                    alert(pilotNameWarning + copilotNameWarning + fuelLevelInputWarning + cargoMassInputWarning);
+                    //Look at chapter 25.9 for this
+                });
+            </script>
+        </form>
+    </div>
+    <div id="launchStatusCheck">
+        <h2 id="launchStatus">Awaiting Information Before Launch</h2>
+        <div id="faultyItems">
+            <ol>
+                <li id="pilotStatus">Pilot Ready</li>
+                <li id="copilotStatus">Co-pilot Ready</li>
+                <li id="fuelStatus">Fuel level high enough for launch</li>
+                <li id="cargoStatus">Cargo mass low enough for launch</li>
+            </ol>
+            <script>
+                let button = document.getElementById("formSubmit");
+                button.addEventListener("click", function(event) {
+                    if (pilotNameStatus = true);
+                    //let pilotStatus = document.querySelector("id[pilotStatus="
+                    //   pilotNameInput.value + " is ready.]");
+                    //ehhhh...??
+                });
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>
