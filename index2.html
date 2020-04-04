@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <title>Launch Checklist</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <script src="script2.js"></script>
-
+    <script src="script1.js"></script>
 </head>
 
 <body>
     <h1>Launch Checklist Form</h1>
-    <div id="missionTarget">
-        <!-- Fetch some planetary data -->
+    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
+        <!--https://www.w3schools.com/js/js_switch.asp-->
+        <label><b>Select Destination:</b></label>
+        <label><input type="radio" name="destination" radioValue="set" checked>  Set  </label>
+        <label><input type="radio" name="destination" radioValue="random">  Random  </label>
     </div>
+    <div id="missionTarget">Set value for destionation here? </div>
+    <!-- Fetch some planetary data -->
+
     <div id="launchForm">
         <form>
             <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">

@@ -13,7 +13,6 @@ function randomizeDestination() {
                 </ol>
                 <img src='${destination.image}'>
              `;
-
         });
     });
 }
@@ -35,7 +34,16 @@ function setDestination() {
         });
     });
 }
-//start Here 
+
+//first attempt at switch code.  may not be best solution.  
+function destinationToggle(radioValue) {
+    if (radioValue.value = "set") {
+        document.getElementById("MissionTarget").value = setDestination();
+    } else if (radioValue.value = "random") {
+        document.getElementById("MissionTarget").value = randomizeDestination();
+    }
+}
+
 function updateLaunchStatus() {
     let pilotNameInput = document.querySelector("input[name=pilotName]").value;
     let copilotNameInput = document.querySelector("input[name=copilotName]").value;
@@ -70,7 +78,6 @@ function updateLaunchStatus() {
                 cargoStatus.innerHTML = "Too much cargo weight";
             }
         }
-
     }
 }
 

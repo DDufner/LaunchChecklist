@@ -13,7 +13,6 @@ function randomizeDestination() {
                 </ol>
                 <img src='${destination.image}'>
              `;
-
         });
     });
 }
