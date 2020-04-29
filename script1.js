@@ -20,29 +20,24 @@ function randomizeDestination() {
 function setDestination() {
     fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
         response.json().then(function(json) {
+            let destination = document.getElementById("selectDestination").value;
             const div = document.getElementById("missionTarget");
             div.innerHTML = `
+                            <h2>Destination</h2>
                             <ul>
-                            <li> Name: ${json[2].name} </li> 
-                            <li> Diameter: ${json[2].diameter} </li> 
-                            <li> Star: ${json[2].star} </li> 
-                            <li> Distance from Earth: ${json[2].distance} </li> 
-                            <li> Number of Moons: ${json[2].moons} </li> 
+                            <li> Name: ${json[destination].name} </li> 
+                            <li> Diameter: ${json[destination].diameter} </li> 
+                            <li> Star: ${json[destination].star} </li> 
+                            <li> Distance from Earth: ${json[destination].distance} </li> 
+                            <li> Number of Moons: ${json[destination].moons} </li> 
                             </ul>
-                            <img src="${json[2].image}">
+                            <img src="${json[destination].image}">
                             `;
         });
     });
 }
 
-//first attempt at switch code.  may not be best solution.  
-function destinationToggle(radioValue) {
-    if (radioValue.value = "set") {
-        document.getElementById("MissionTarget").value = setDestination();
-    } else if (radioValue.value = "random") {
-        document.getElementById("MissionTarget").value = randomizeDestination();
-    }
-}
+
 
 function updateLaunchStatus() {
     let pilotNameInput = document.querySelector("input[name=pilotName]").value;
@@ -124,6 +119,16 @@ function validateEntry() {
     }
 }
 
+function showResults() {
+    var resultMessage = document.getElementById("launchStatusCheck");
+    if (resultMessage.style.display === "none") {
+        resultMessage.style.display = "block";
+    } else {
+        resultMessage.style.display = "none";
+        resultMessage.reset();
+    }
+}
+//
 window.addEventListener("load", function() {
     setDestination();
     let button = document.getElementById("formSubmit");

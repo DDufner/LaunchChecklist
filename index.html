@@ -10,16 +10,26 @@
 
 <body>
     <h1>Launch Checklist Form</h1>
-    <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
-        <!--https://www.w3schools.com/js/js_switch.asp-->
-        <label><b>Select Destination:</b></label>
-        <label><input type="radio" name="destination" radioValue="set" checked>  Set  </label>
-        <label><input type="radio" name="destination" radioValue="random">  Random  </label>
+    <div>
+        <form id="destinationDropdown" action="">
+            <h3>Please select a destination</h3>
+            <select id="selectDestination">
+            <option value = 0 >Tatooine</option>
+            <option value = 1 >Pern</option>
+            <option value = 2 >Saturn/Titan</option>
+            <option value = 3 >Mars</option>
+            <option value = 4 >K2-18b</option>
+            <option value = 5 >Juniper/Europa</option>
+            <!--<option value = ((Math.random() * 6) +1)>Random</option>-->
+        </select>
+            <button type="button" onclick="setDestination()">Select</button>
+        </form>
     </div>
-    <div id="missionTarget">Set value for destionation here? </div>
+
+    <div id="missionTarget"></div>
     <!-- Fetch some planetary data -->
 
-    <div id="launchForm">
+    <div id="launchForm" style="align-self: center;">
         <form>
             <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
                 <label>Pilot Name <input type="text" name="pilotName" id="pilotName"/></label>
